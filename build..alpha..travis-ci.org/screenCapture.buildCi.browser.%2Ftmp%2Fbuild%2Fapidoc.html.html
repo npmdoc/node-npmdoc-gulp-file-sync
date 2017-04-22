@@ -1,0 +1,126 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/kayo5994/gulp-file-sync#readme">gulp-file-sync (v1.0.7)</a>
+</h1>
+<h4>Sync file It keeps your files synced between two directory. In other words, any change of files in one directory will automatically take place in another one.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-file-sync">module gulp-file-sync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-file-sync.gulp-file-sync">
+            function <span class="apidocSignatureSpan"></span>gulp-file-sync
+            <span class="apidocSignatureSpan">(_src, _dest, _options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-file-sync" id="apidoc.module.gulp-file-sync">module gulp-file-sync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-file-sync.gulp-file-sync" id="apidoc.element.gulp-file-sync.gulp-file-sync">
+        function <span class="apidocSignatureSpan"></span>gulp-file-sync
+        <span class="apidocSignatureSpan">(_src, _dest, _options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">gulp-file-sync = function (_src, _dest, _options) {
+  if (typeof(_src) !== 'string') {
+    throw new gutil.PluginError(pluginDisplayName, 'Missing source directory or type is not a string.')
+  }
+  if (typeof(_dest) !== 'string') {
+    throw new gutil.PluginError(pluginDisplayName, 'Missing destination directory or type is not a string.')
+  }
+
+	_options = _options || {};
+
+  // æ˜¯å¦é€’å½’æ‰€æœ‰å­ç›®å½•çš„å‚æ•°çš„é»˜è®¤å€¼
+  _options.recursive = (_options.recursive === undefined) || _options.recursive;
+
+  // æ–°å¢žæ–‡ä»¶æ—¶è¾“å‡ºåˆ°æŽ§åˆ¶å°çš„é»˜è®¤ callback
+  _options.addFileCallback  = _options.addFileCallback || function(_fullPathSrc, _fullPathDest) {
+    gutil.log('File addition synced ' + _fullPathDest);
+  };
+
+  // åˆ&nbsp;é™¤æ–‡ä»¶æ—¶è¾“å‡ºåˆ°æŽ§åˆ¶å°çš„é»˜è®¤ callback
+  _options.deleteFileCallback  = _options.deleteFileCallback || function(_fullPathSrc, _fullPathDest) {
+    gutil.log('File deletion synced ' + _fullPathDest);
+  };
+
+  // ä¿®æ”¹æ–‡ä»¶æ—¶è¾“å‡ºåˆ°æŽ§åˆ¶å°çš„é»˜è®¤ callback
+  _options.updateFileCallback  = _options.updateFileCallback || function(_fullPathSrc, _fullPathDest) {
+    gutil.log('File modification synced ' + _fullPathDest);
+  };
+
+  // æ£€æŸ¥ç›®æ&nbsp;‡ç›®å½•æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æžœç›®æ&nbsp;‡ç›®å½•ä¸å­˜åœ¨åˆ™åˆ›å»ºä¸€ä¸ªï¼Œå¦‚æžœç›®æ&nbsp;‡ç›®å½•ä¸å­˜åœ¨è€Œç›´æŽ¥å†™å…¥æ–‡ä»¶åˆ™ä¼š crash
+  fs.ensureDirSync(_dest);
+  remove(_options, _src, _dest);
+  add(_options, _src, _dest);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
